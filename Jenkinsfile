@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git url: 'https://gitlab.artibedded.com/summer2024/LLM.git'
+        git url: https://github.com/medhammadi/perfectionnement-stage.git'
       }
     }
 
