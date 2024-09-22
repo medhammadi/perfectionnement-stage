@@ -4,14 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/medhammadi/perfectionnement-stage.git', credentialsId: 'med-github'
-
+                git branch: 'main', url: 'https://github.com/medhammadi/perfectionnement-stage.git'
             }
         }
 
         stage('TRIVY FS SCAN') {
             steps {
-                sh 'trivy fs .'
+                sh '/snap/bin/trivy fs .'
             }
         }
     }
