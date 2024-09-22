@@ -11,7 +11,7 @@ pipeline {
             steps {
                 script {
                     // Construction de l'image backend
-                    docker.build("medhammadi/backend:latest", "-f ./Backend/Dockerfile .")
+                    docker.build("medhammadi/backend:latest", "-f ./backend/Dockerfile .")
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Construction de l'image front
-                    docker.build("medhammadi/front:latest", "-f ./Front/Dockerfile .")
+                    docker.build("medhammadi/frontEnd:latest", "-f ./frontEnd/Dockerfile .")
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'credential-med-dockerHub') {
                         // Pousser l'image front
-                        docker.image("medhammadi/front:latest").push()
+                        docker.image("medhammadi/frontEnd:latest").push()
                     }
                 }
             }
