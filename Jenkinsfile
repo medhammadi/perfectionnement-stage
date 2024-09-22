@@ -1,5 +1,5 @@
 pipeline {
-  agent { label 'hammadi-node' }
+  agent any
   stages {
     stage('Clean workspace') {
       steps {
