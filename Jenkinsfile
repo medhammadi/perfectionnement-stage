@@ -2,6 +2,13 @@ pipeline {
     agent any
 
     stages {
+       stage('Test Docker') {
+            steps {
+                script {
+                    sh 'docker ps'
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/medhammadi/perfectionnement-stage.git'
