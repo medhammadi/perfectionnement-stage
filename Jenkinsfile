@@ -10,7 +10,9 @@ pipeline {
 
         stage('TRIVY FS SCAN') {
             steps {
-                sh '/snap/bin/trivy fs .'
+                script {
+                    sh 'docker run --rm -v $WORKSPACE:/root/. aquasec/trivy fs .'
+                }
             }
         }
     }
