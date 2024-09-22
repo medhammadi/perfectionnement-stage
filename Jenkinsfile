@@ -11,5 +11,16 @@ pipeline {
         git branch: 'main', url: 'https://github.com/medhammadi/perfectionnement-stage.git'
       }
     }
+    stage('SonarQube Analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('SonarQubeServer') {
+                        withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_TOKEN')]) {
+                            sh 'mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN}'
+                        }
+                    }
+                }
+            }
+        }
   }
 }
